@@ -1,0 +1,319 @@
+@model DienThoaiWeb.Models.SanPham
+@{
+    ViewData["Title"] = Model.TenSP + " - Chi tiết sản phẩm";
+}
+
+<style>
+/* PREMIUM PRODUCT DETAILS PAGE CSS */
+.product-detail-container {
+    max-width: 1200px;
+    margin: 40px auto 100px;
+    padding: 0 20px;
+}
+
+.product-breadcrumb {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.product-breadcrumb a {
+    color: #005bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.product-breadcrumb a:hover {
+    color: #004494;
+}
+
+.product-header-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.product-rating-overview {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.product-rating-overview .stars i {
+    color: #f59e0b;
+    font-size: 1.1rem;
+}
+
+.product-rating-overview .review-count {
+    color: #666;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.product-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.product-gallery {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 100px;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.product-gallery img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.product-gallery:hover img {
+    transform: scale(1.05);
+}
+
+.product-info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.product-price-box {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0, 91, 187, 0.1);
+}
+
+.current-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ff3b30;
+    margin-bottom: 10px;
+}
+
+.promo-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+}
+
+.policy-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.policy-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.policy-item:last-child {
+    margin-bottom: 0;
+}
+
+.policy-item i {
+    font-size: 1.5rem;
+    color: #005bbb;
+    flex-shrink: 0;
+}
+
+.order-btn-lg {
+    background: linear-gradient(135deg, #005bbb 0%, #004494 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 15px 35px rgba(0, 91, 187, 0.3);
+    text-decoration: none;
+    display: block;
+}
+
+.order-btn-lg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 91, 187, 0.4);
+}
+
+.order-btn-lg b {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.order-btn-lg p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.tech-specs-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    overflow: hidden;
+}
+
+.tech-specs-header {
+    background: #fafafa;
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.tech-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tech-specs-table tr {
+    transition: background 0.3s;
+}
+
+.tech-specs-table tr:hover {
+    background: #f8fbff;
+}
+
+.tech-specs-table td {
+    padding: 16px 25px;
+    font-size: 1rem;
+    border-bottom: 1px dashed #eee;
+}
+
+.tech-specs-table tr:last-child td {
+    border-bottom: none;
+}
+
+.tech-specs-label {
+    width: 35%;
+    color: #666;
+    font-weight: 500;
+}
+
+.tech-specs-val {
+    width: 65%;
+    color: #222;
+    font-weight: 700;
+}
+
+/* Responsiveness */
+@@media (max-width: 900px) {
+    .product-main-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-gallery {
+        position: relative;
+        top: 0;
+        padding: 20px;
+    }
+}
+</style>
+
+<div class="product-detail-container">
+    <div class="product-breadcrumb">
+        <a href="/">Trang chủ</a> &nbsp;&rsaquo;&nbsp; Smartphone &nbsp;&rsaquo;&nbsp; @Model.ThuongHieu
+    </div>
+    
+    <h1 class="product-header-title">@Model.TenSP</h1>
+    
+    <div class="product-rating-overview">
+        <div class="stars">
+            @for(int i = 1; i <= 5; i++)
+            {
+                <i class="fa fa-star@(Model.SoSao >= i ? "" : "-o")"></i>
+            }
+        </div>
+        <span class="review-count">(@Model.SoDanhGia lượt đánh giá chân thực)</span>
+    </div>
+    
+    <div class="product-main-grid">
+        <!-- Vùng hiển thị Ảnh -->
+        <div class="product-gallery">
+            <img src="@Model.HinhAnh" alt="@Model.TenSP">
+        </div>
+        
+        <!-- Vùng thông tin và mua hàng -->
+        <div class="product-info-panel">
+            
+            <div class="product-price-box">
+                <div class="current-price">@Model.Gia ₫</div>
+                @if (!string.IsNullOrEmpty(Model.KhuyenMai))
+                {
+                    <div class="promo-tag">
+                        <i class="fa fa-bolt"></i> Ưu đãi: @Model.KhuyenMai 
+                        @(string.IsNullOrEmpty(Model.GiaTriKhuyenMai) ? "" : "- " + Model.GiaTriKhuyenMai)
+                    </div>
+                }
+            </div>
+            
+            <div class="tech-specs-card">
+                <h2 class="tech-specs-header">Bảng Thông Số Kỹ Thuật</h2>
+                <table class="tech-specs-table">
+                    <tr><td class="tech-specs-label">Màn hình</td><td class="tech-specs-val">@Model.ManHinh</td></tr>
+                    <tr><td class="tech-specs-label">Hệ điều hành</td><td class="tech-specs-val">@Model.HeDieuHanh</td></tr>
+                    <tr><td class="tech-specs-label">Camera trước</td><td class="tech-specs-val">@Model.CameraTruoc</td></tr>
+                    <tr><td class="tech-specs-label">Camera sau</td><td class="tech-specs-val">@Model.CameraSau</td></tr>
+                    <tr><td class="tech-specs-label">Vi xử lý (CPU)</td><td class="tech-specs-val">@Model.CPU</td></tr>
+                    <tr><td class="tech-specs-label">Dung lượng RAM</td><td class="tech-specs-val">@Model.RAM</td></tr>
+                    <tr><td class="tech-specs-label">Bộ nhớ trong (ROM)</td><td class="tech-specs-val">@Model.ROM</td></tr>
+                    <tr><td class="tech-specs-label">Hỗ trợ thẻ nhớ</td><td class="tech-specs-val">@Model.TheNho</td></tr>
+                    <tr><td class="tech-specs-label">Dung lượng Pin</td><td class="tech-specs-val">@Model.DungLuongPin</td></tr>
+                </table>
+            </div>
+
+            <div class="policy-card">
+                <div class="policy-item">
+                    <i class="fa fa-box-open"></i>
+                    <div><b>Bộ sản phẩm gồm:</b> Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type C.</div>
+                </div>
+                <div class="policy-item">
+                    <i class="fa fa-shield-alt"></i>
+                    <div><b>Bảo hành:</b> Bảo hành chính hãng 12-24 tháng tại các TT uỷ quyền.</div>
+                </div>
+                <div class="policy-item">
+                    <i class="fa fa-exchange-alt"></i>
+                    <div><b>Hậu mãi đổi trả:</b> Lỗi là đổi mới trong 30 ngày tận nhà siêu tốc.</div>
+                </div>
+            </div>
+            
+            <a class="order-btn-lg" onclick="themVaoGioHangMoi('@Model.MaSP');">
+                <b><i class="fa fa-cart-plus"></i> Đặt Hàng Ngay</b>
+                <p>Giao siêu tốc trong 1 giờ, được đồng kiểm khi nhận hàng</p>
+            </a>
+            
+        </div>
+    </div>
+</div>

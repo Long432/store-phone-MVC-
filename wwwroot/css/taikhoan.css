@@ -1,0 +1,170 @@
+/* Premium Glassmorphism Modal */
+.containTaikhoan {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.taikhoan {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    max-width: 480px;
+    margin: 8vh auto;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: modalFadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 32px;
+    font-weight: 300;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #ff4d4d;
+}
+
+.tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 35px;
+    display: flex;
+    background: #f1f4f8;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+}
+
+.tab a {
+    display: block;
+    padding: 16px;
+    font-weight: 600;
+    color: #666;
+    background: transparent;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.tab.active a {
+    background: #005bbb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,91,187,0.3);
+}
+
+.tab-content h1 {
+    text-align: center;
+    color: #111;
+    font-weight: 800;
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+}
+
+.field-wrap {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.field-wrap label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    padding: 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #005bbb;
+    transition: all 0.3s;
+    z-index: 2;
+    border-radius: 4px;
+}
+
+.field-wrap input {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #e1e5eb;
+    border-radius: 12px;
+    font-size: 15px;
+    background: transparent;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.field-wrap input:focus {
+    border-color: #005bbb;
+    box-shadow: 0 0 0 5px rgba(0,91,187,0.1);
+}
+
+.req {
+    color: #ff4d4d;
+    margin-left: 4px;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #005bbb, #001f3f);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 8px 20px rgba(0,91,187,0.3);
+    margin-top: 30px;
+}
+
+.button-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0,91,187,0.4);
+}
+
+.forgot {
+    text-align: right;
+    margin-top: -10px;
+}
+
+.forgot a {
+    color: #005bbb;
+    font-size: 14px;
+    font-weight: 600;
+}
+.forgot a:hover {
+    text-decoration: underline;
+}
+
+.top-row {
+    display: flex;
+    gap: 15px;
+}
+.top-row .field-wrap {
+    flex: 1;
+}

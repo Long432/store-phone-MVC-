@@ -1,0 +1,248 @@
+@model IEnumerable<DienThoaiWeb.Models.SanPham>
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<style>
+/* PREMIUM PRODUCT CARDS */
+.homeproduct.flexContain {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 30px !important;
+    padding: 20px 0 !important;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.modern-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modern-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 91, 187, 0.12);
+    border-color: rgba(0, 102, 204, 0.1);
+}
+
+.modern-card-img-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.modern-card-img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.modern-card:hover .modern-card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.modern-promo-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(255, 65, 108, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+.modern-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.modern-card-price {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ff3b30;
+    margin-bottom: 15px;
+    margin-top: auto;
+}
+
+.modern-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.modern-rating i {
+    color: #f59e0b;
+    font-size: 0.9rem;
+}
+
+.modern-add-btn {
+    width: 100%;
+    background: #f5f5f7;
+    color: #005bbb;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.modern-card:hover .modern-add-btn {
+    background: #005bbb;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 91, 187, 0.2);
+}
+</style>
+
+<!-- NEW PREMIUM HERO SECTION -->
+<div class="hero-section" style="
+    background: linear-gradient(135deg, #05142a, #005bbb);
+    color: white;
+    padding: 80px 30px;
+    border-radius: 20px;
+    margin: 30px 15px 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 91, 187, 0.3);
+    position: relative;
+    overflow: hidden;
+">
+    <div style="position: absolute; top: -50%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
+    
+    <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); position: relative; z-index: 2;">Thế Giới Công Nghệ Trong Tầm Tay</h1>
+    <p style="font-size: 1.25rem; font-weight: 300; opacity: 0.9; max-width: 650px; margin: 0 auto 35px; line-height: 1.6; position: relative; z-index: 2;">Chiêm ngưỡng bộ sưu tập Smartphone đỉnh cao nhất với mức giá đột phá. Độc quyền giảm giá lên tới 30% cho lần mua đầu tiên.</p>
+    
+    <a href="#products-area" style="
+        position: relative; z-index: 2;
+        display: inline-block;
+        background: white;
+        color: #005bbb;
+        padding: 15px 35px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 10px 25px rgba(255,255,255,0.25);
+        text-decoration: none;
+    " onmouseover="this.style.transform='scale(1.08) translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(255,255,255,0.4)';" 
+       onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.boxShadow='0 10px 25px rgba(255,255,255,0.25)';">Khám Phá Ngay</a>
+</div>
+
+<form method="get" action="/" id="filterForm" style="display: flex; gap: 15px; margin-bottom: 25px; align-items: center; justify-content: center; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #f0f0f0; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <input type="hidden" name="search" value="@Context.Request.Query["search"]" />
+    <span style="font-weight: 700; color: #333; margin-right: 15px;"><i class="fa fa-filter"></i> Lọc sản phẩm:</span>
+    
+    <select name="gia" onchange="this.form.submit()" style="padding: 10px 20px; border-radius: 50px; border: 1px solid #ddd; outline: none; cursor: pointer; background: #fafafa; font-weight: 500; font-family: inherit;">
+        <option value="">-- Mức giá --</option>
+        @if(Context.Request.Query["gia"] == "duoi-10") { <option value="duoi-10" selected>Dưới 10 triệu</option> } else { <option value="duoi-10">Dưới 10 triệu</option> }
+        @if(Context.Request.Query["gia"] == "10-20") { <option value="10-20" selected>10 - 20 triệu</option> } else { <option value="10-20">10 - 20 triệu</option> }
+        @if(Context.Request.Query["gia"] == "tren-20") { <option value="tren-20" selected>Trên 20 triệu</option> } else { <option value="tren-20">Trên 20 triệu</option> }
+    </select>
+
+    <select name="sapXep" onchange="this.form.submit()" style="padding: 10px 20px; border-radius: 50px; border: 1px solid #ddd; outline: none; cursor: pointer; background: #fafafa; font-weight: 500; font-family: inherit;">
+        <option value="">-- Sắp xếp --</option>
+        @if(Context.Request.Query["sapXep"] == "gia-tang") { <option value="gia-tang" selected>Giá tăng dần</option> } else { <option value="gia-tang">Giá tăng dần</option> }
+        @if(Context.Request.Query["sapXep"] == "gia-giam") { <option value="gia-giam" selected>Giá giảm dần</option> } else { <option value="gia-giam">Giá giảm dần</option> }
+    </select>
+</form>
+<hr style="border-top: 1px solid rgba(0,0,0,0.05); margin: 30px 0;">
+
+<div class="contain-products" id="products-area"> 
+    <div class="filterName" style="max-width: 600px; margin: 0 auto 40px; position: relative;">
+        <form method="get" action="/">
+            <i class="fa fa-search" style="position: absolute; left: 20px; top: 16px; color: #888; font-size: 18px;"></i>
+            <input type="text" name="search" placeholder="Nhập tên sản phẩm để tìm kiếm (Razor Live-Search)..." value="@Context.Request.Query["search"]" onchange="this.form.submit()"
+                style="width: 100%; padding: 15px 20px 15px 50px; border-radius: 50px; border: 2px solid transparent; box-shadow: 0 8px 20px rgba(0,0,0,0.06); font-size: 1.05rem; transition: all 0.3s; background: white;"
+                onfocus="this.style.border='2px solid #005bbb'; this.style.boxShadow='0 10px 30px rgba(0,91,187,0.15)';"
+                onblur="this.style.border='2px solid transparent'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.06)';">
+        </form>
+    </div> 
+
+    <div id="products" class="homeproduct flexContain">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var sp in Model)
+            {
+                <div class="modern-card">
+                    @if (!string.IsNullOrEmpty(sp.KhuyenMai))
+                    {
+                        <div class="modern-promo-badge">
+                            <i class="fa fa-bolt"></i> @sp.KhuyenMai
+                        </div>
+                    }
+                    <a href="/SanPham/ChiTiet/@sp.MaSP" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="modern-card-img-wrapper">
+                            <img src="@sp.HinhAnh" alt="@sp.TenSP">
+                        </div>
+                        
+                        <h3 class="modern-card-title">@sp.TenSP</h3>
+                        
+                        <div class="modern-card-price">
+                            @sp.Gia ₫
+                        </div>
+                        
+                        <div class="modern-rating">
+                            <div class="stars">
+                                @for(int i = 1; i <= 5; i++)
+                                {
+                                    <i class="fa fa-star@(sp.SoSao >= i ? "" : "-o")"></i>
+                                }
+                            </div>
+                            <span>(@sp.SoDanhGia đánh giá)</span>
+                        </div>
+                    </a>
+                    
+                    <button class="modern-add-btn" onclick="themVaoGioHangMoi('@sp.MaSP'); return false;">
+                        <i class="fa fa-cart-plus"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            }
+        }
+        else
+        {
+            <div id="khongCoSanPham" style="opacity: 1; padding: 60px 40px; text-align: center; width: 100%; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); grid-column: 1 / -1;">
+                <i class="fa fa-search" style="font-size: 4rem; margin-bottom: 25px; color: #e0e0e0; display: block;"></i>
+                <h3 style="color: #666; font-weight: 500;">Rất tiếc, không có sản phẩm nào khớp với tìm kiếm của bạn.</h3>
+            </div>
+        }
+    </div>
+
+    <div class="pagination"></div>
+</div>
+<div class="contain-khungSanPham" ></div>

@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Admin";
+}
+<link rel="stylesheet" href="~/css/admin/style.css">
+<link rel="stylesheet" href="~/css/admin/progress.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="~/js/admin.js"></script>
+
+<div class="main" style="padding: 20px;">
+    <h2>Trang Quản Trị Hệ Thống (Đã nâng cấp lên ASP.NET Core)</h2>
+    <div class="home">
+        <div class="canvasContainer"><canvas id="myChart1"></canvas></div>
+        <div class="canvasContainer"><canvas id="myChart2"></canvas></div>
+    </div>
+    <div style="margin-top: 2rem;">
+        <p>Giao diện được tái sử dụng qua _Layout.cshtml. Dữ liệu từ Entity Framework đang được thao tác.</p>
+    </div>
+</div>

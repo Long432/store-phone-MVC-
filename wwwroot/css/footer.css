@@ -1,0 +1,74 @@
+/* Footer & Placement Modernized */
+.plc {
+    background: var(--white-color);
+    font-size: 14px;
+    color: var(--black-color);
+    border-top: 1px solid var(--gray-border);
+    border-bottom: 1px solid var(--gray-border);
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.plc ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.plc li {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 15px;
+    line-height: 22px;
+    background: var(--gray-light);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.plc li:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-sm);
+    background: var(--white-color);
+}
+
+.plc li a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Footer Container */
+.footer {
+    position: relative;
+    width: 100%;
+    background: var(--black-color);
+}
+
+.copy-right {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 13px;
+    color: rgb(173, 181, 189);
+    background-color: var(--black-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copy-right p {
+    margin: 0;
+}
+
+.copy-right a {
+    color: rgb(206, 212, 218);
+    font-weight: 600;
+}
+
+.copy-right a:hover {
+    color: var(--white-color);
+    text-decoration: underline;
+}

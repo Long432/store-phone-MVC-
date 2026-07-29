@@ -1,0 +1,128 @@
+@model List<DienThoaiWeb.Models.CartItem>
+@{
+    ViewData["Title"] = "Giỏ Hàng Của Bạn";
+}
+<style>
+.cart-wrap { max-width: 1000px; margin: 40px auto; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); padding: 40px; border: 1px solid rgba(255,255,255,0.5); }
+.cart-header-title { margin-bottom: 35px; color: #111; font-weight: 800; font-size: 28px; letter-spacing: -0.5px; }
+
+/* Item Layout */
+.cart-item { display: flex; align-items: center; justify-content: space-between; padding: 25px 0; border-bottom: 1px solid #f0f0f0; transition: background 0.3s; border-radius: 12px; }
+.cart-item:hover { background: #fafbfc; padding: 25px 10px; }
+.cart-item:last-child { border-bottom: none; }
+
+.item-info { display: flex; align-items: center; gap: 20px; flex: 2; }
+.item-img { width: 90px; height: 90px; object-fit: contain; border-radius: 12px; background: white; padding: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #eee; }
+.item-name { font-weight: 700; color: #1a1a1a; font-size: 1.1rem; text-decoration: none; margin-bottom: 5px; display: block; transition: color 0.2s; }
+.item-name:hover { color: #005bbb; }
+.item-price { color: #888; font-weight: 500; font-size: 0.95rem; }
+
+.item-actions { display: flex; align-items: center; gap: 30px; flex: 1; justify-content: flex-end; }
+
+/* Quantity Selector */
+.qty-selector { display: flex; align-items: center; background: white; border-radius: 30px; border: 1px solid #e0e0e0; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); height: 40px; }
+.qty-btn { background: none; border: none; width: 40px; height: 100%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 1.1rem; color: #555; transition: all 0.2s; }
+.qty-btn:hover { background: #f4f6f8; color: #ff6b00; }
+.qty-input { width: 50px; text-align: center; border: none; outline: none; font-weight: 700; font-size: 1rem; color: #222; background: transparent; }
+
+.item-total { font-weight: 800; color: #ff3b30; font-size: 1.1rem; min-width: 120px; text-align: right; }
+
+.btn-remove { background: #fff1f0; color: #ff4d4f; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 1.1rem; transition: all 0.3s; border: none; cursor: pointer; }
+.btn-remove:hover { background: #ff4d4f; color: white; transform: scale(1.1) rotate(90deg); }
+
+/* Cart Summary */
+.cart-summary { margin-top: 30px; background: #f8fbff; padding: 30px; border-radius: 20px; border: 1px dashed rgba(0, 91, 187, 0.2); text-align: right; }
+.cart-total-label { font-size: 1.1rem; color: #555; font-weight: 600; margin-right: 15px; }
+.cart-total-val { font-size: 2rem; font-weight: 800; color: #ff3b30; }
+
+.checkout-area { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+.continue-btn { font-weight: 600; color: #005bbb; text-decoration: none; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; transition: transform 0.2s; }
+.continue-btn:hover { transform: translateX(-5px); }
+.btn-checkout { background: linear-gradient(135deg, #005bbb 0%, #004494 100%); color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-size: 1.1rem; font-weight: 700; transition: all 0.3s; box-shadow: 0 10px 25px rgba(0,91,187,0.3); display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+.btn-checkout:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,91,187,0.4); }
+</style>
+
+<div class="cart-wrap">
+    <h2 class="cart-header-title">Giỏ hàng của bạn (<span class="cart-number">@Model.Sum(x => x.SoLuong)</span>) 🛒</h2>
+    
+    @if(Model.Count == 0)
+    {
+        <div style="text-align: center; padding: 80px 0;">
+            <img src="~/img/chitietsanpham/box.png" alt="Empty" style="width: 120px; opacity: 0.3; margin-bottom: 20px; filter: grayscale(100%);" />
+            <p style="font-size: 1.2rem; color: #888; margin-bottom: 30px; font-weight: 500;">Túi đồ của bạn đang trống rỗng.</p>
+            <a href="/" class="btn-checkout" style="display: inline-flex; width: auto; padding: 15px 35px;"><i class="fa fa-arrow-left"></i> Khám phá sản phẩm</a>
+        </div>
+    }
+    else
+    {
+        <div class="cart-items-container">
+            @foreach(var item in Model)
+            {
+                <div class="cart-item" id="item-@item.MaSP">
+                    <div class="item-info">
+                        <a href="/SanPham/ChiTiet/@item.MaSP"><img class="item-img" src="@item.HinhAnh" alt="@item.TenSP" /></a>
+                        <div>
+                            <a href="/SanPham/ChiTiet/@item.MaSP" class="item-name">@item.TenSP</a>
+                            <div class="item-price">@item.DonGia.ToString("N0") ₫</div>
+                        </div>
+                    </div>
+                    
+                    <div class="item-actions">
+                        <div class="qty-selector">
+                            <button class="qty-btn" onclick="updateQty('@item.MaSP', -1)"><i class="fa fa-minus"></i></button>
+                            <input type="text" class="qty-input" id="qty-@item.MaSP" value="@item.SoLuong" readonly />
+                            <button class="qty-btn" onclick="updateQty('@item.MaSP', 1)"><i class="fa fa-plus"></i></button>
+                        </div>
+                        
+                        <div class="item-total" id="total-@item.MaSP">
+                            @item.ThanhTien.ToString("N0") ₫
+                        </div>
+                        
+                        <a href="/GioHang/XoaKhoiGioHang?maSp=@item.MaSP" class="btn-remove" title="Xóa"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <div class="cart-summary">
+            <span class="cart-total-label">Tổng cộng:</span>
+            <span class="cart-total-val" id="cart-grand-total">@Model.Sum(x => x.ThanhTien).ToString("N0") ₫</span>
+        </div>
+        
+        <div class="checkout-area">
+            <a href="/" class="continue-btn"><i class="fa fa-long-arrow-left"></i> Chọn thêm sản phẩm</a>
+            <a href="/GioHang/ThanhToan" class="btn-checkout">
+                Thanh Toán An Toàn <i class="fa fa-shield"></i>
+            </a>
+        </div>
+    }
+</div>
+
+<script>
+function updateQty(maSp, change) {
+    let input = document.getElementById('qty-' + maSp);
+    let currentVal = parseInt(input.value);
+    let newVal = currentVal + change;
+    
+    if (newVal < 1) {
+        if(confirm("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?")) {
+            window.location.href = '/GioHang/XoaKhoiGioHang?maSp=' + maSp;
+        }
+        return;
+    }
+    
+    // Gọi AJAX
+    $.post('/GioHang/CapNhatSoLuong', { maSp: maSp, soLuong: newVal }, function(res) {
+        if(res.success) {
+            // Hiệu ứng Fade nhẹ 
+            $('#item-' + maSp).css('opacity', '0.5').animate({opacity: 1}, 300);
+            
+            // Cập nhật giá trị
+            input.value = newVal;
+            $('.cart-number').text(res.totalCount);
+            $('#total-' + maSp).text(res.itemTotal.toLocaleString('vi-VN') + ' ₫');
+            $('#cart-grand-total').text(res.cartTotal.toLocaleString('vi-VN') + ' ₫');
+        }
+    });
+}
+</script>

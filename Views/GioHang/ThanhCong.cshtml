@@ -1,0 +1,18 @@
+@model string
+@{
+    ViewData["Title"] = "Đặt Hàng Thành Công";
+}
+<div style="max-width: 600px; margin: 80px auto; text-align: center; background: white; padding: 60px 40px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); border: 2px solid #2ed573;">
+    <i class="fa fa-check-circle" style="font-size: 90px; color: #2ed573; margin-bottom: 25px;"></i>
+    <h1 style="font-size: 36px; font-weight: 800; color: #111; margin-bottom: 15px;">Đặt hàng thành công!</h1>
+    <p style="font-size: 16px; color: #555; line-height: 1.6; margin-bottom: 30px;">Cảm ơn bạn đã mua sắm tại LDD Store. Đơn hàng của bạn đã được hệ thống ghi nhận thành công và đang được chúng tôi xử lý để giao trong thời gian ngắn nhất.</p>
+    
+    <div style="background: #f8f9fa; border: 1px dashed #ccc; padding: 20px; border-radius: 12px; margin-bottom: 35px; display: inline-block;">
+        <span style="color: #666; font-size: 14px; text-transform: uppercase; font-weight: 600;">Mã đơn tra cứu của bạn là:</span>
+        <h2 style="font-size: 32px; font-weight: 800; color: #005bbb; margin-top: 8px; letter-spacing: 2px;">@Model</h2>
+    </div>
+
+    <p style="font-size: 14px; color: #888; margin-bottom: 40px;">Mọi thông tin hóa đơn và lịch trình vận chuyển sẽ được cập nhật sớm nhất qua Email/Số điện thoại bạn vừa cung cấp.</p>
+    
+    <a href="/" style="background: linear-gradient(135deg, #005bbb, #001f3f); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; box-shadow: 0 5px 15px rgba(0,91,187,0.3); transition: transform 0.2s; display: inline-block;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Tiếp Tục Mua Sắm</a>
+</div>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>@ViewData["Title"] - Smartphone Premium</title>
+	<link rel="shortcut icon" href="~/img/favicon.ico" />
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="~/js/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/js/owlcarousel/owl.theme.default.min.css">
+	<script src="~/js/Jquery/Jquery.min.js"></script>
+	<script src="~/js/owlcarousel/owl.carousel.min.js"></script>
+	<link rel="stylesheet" href="~/css/style.css">
+	<link rel="stylesheet" href="~/css/topnav.css">
+	<link rel="stylesheet" href="~/css/header.css">
+	<link rel="stylesheet" href="~/css/banner.css">
+	<link rel="stylesheet" href="~/css/taikhoan.css">
+	<link rel="stylesheet" href="~/css/trangchu.css">
+	<link rel="stylesheet" href="~/css/home_products.css">
+	<link rel="stylesheet" href="~/css/pagination_phantrang.css">
+	<link rel="stylesheet" href="~/css/footer.css">
+	<script src="~/data/products.js"></script>
+	<script src="~/js/classes.js"></script>
+	<script src="~/js/dungchung.js"></script>
+	<script src="~/js/trangchu.js"></script>
+</head>
+<body>
+    <!-- Premium Ambient Mesh Gradient Background -->
+    <style>
+        body, html {
+            background-color: transparent !important;
+        }
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -10;
+            background-color: #f4f6fa;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.7;
+            animation: blob-float 25s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+        .blob-1 {
+            width: 60vw; height: 60vw;
+            background: rgba(0, 91, 187, 0.12); /* Branded Blue */
+            top: -20vh; left: -10vw;
+        }
+        .blob-2 {
+            width: 50vw; height: 50vw;
+            background: rgba(255, 107, 0, 0.1); /* Branded Orange */
+            bottom: -20vh; right: -10vw;
+            animation-delay: -5s;
+            animation-duration: 30s;
+        }
+        .blob-3 {
+            width: 40vw; height: 40vw;
+            background: rgba(252, 96, 118, 0.08); /* Pink */
+            top: 20vh; left: 40vw;
+            animation-delay: -15s;
+            animation-duration: 20s;
+        }
+        @@keyframes blob-float {
+            0%   { transform: translate(0, 0) scale(1); }
+            33%  { transform: translate(5vw, -5vh) scale(1.1); }
+            66%  { transform: translate(-3vw, 4vh) scale(0.9); }
+            100% { transform: translate(4vw, 5vh) scale(1.05); }
+        }
+    </style>
+    <div class="ambient-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+    </div>
+
+	<!-- Top Nav -->
+    <div class="top-nav" style="background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); position: relative; z-index: 100; padding: 6px 0;">
+        <section style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <ul class="top-nav-quicklink" style="display: flex; list-style: none; margin: 0; padding: 0; font-size: 13px; gap: 24px; font-weight: 500;">
+                <li><a href="/" style="color: #bbb; text-decoration: none; transition: color 0.3s;"><i class="fa fa-home" style="margin-right: 4px;"></i> Trang chủ</a></li>
+                <li><a href="/Home/TinTuc" style="color: #bbb; text-decoration: none; transition: color 0.3s;"><i class="fa fa-newspaper-o" style="margin-right: 4px;"></i> Tin tức</a></li>
+                <li><a href="/Home/TuyenDung" style="color: #bbb; text-decoration: none; transition: color 0.3s;"><i class="fa fa-handshake-o" style="margin-right: 4px;"></i> Tuyển dụng</a></li>
+                <li><a href="/Home/GioiThieu" style="color: #bbb; text-decoration: none; transition: color 0.3s;"><i class="fa fa-info-circle" style="margin-right: 4px;"></i> Giới thiệu</a></li>
+                <li><a href="/Home/BaoHanh" style="color: #bbb; text-decoration: none; transition: color 0.3s;"><i class="fa fa-wrench" style="margin-right: 4px;"></i> Bảo hành</a></li>
+                <li><a href="/Home/LienHe" style="color: #bbb; text-decoration: none; transition: color 0.3s;"><i class="fa fa-phone" style="margin-right: 4px;"></i> Liên hệ</a></li>
+            </ul>
+        </section>
+    </div>
+    <style>
+        .top-nav-quicklink a:hover { color: #fff !important; }
+        .header { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.04); position: sticky; top: 0; z-index: 99; transition: box-shadow 0.3s ease; }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 20px; }
+        
+        .logo a { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+        .brand-text { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 24px; color: #111; letter-spacing: -0.5px; line-height: 1; }
+        .brand-text span { color: #ff6b00; }
+        
+        .search-wrapper { position: relative; width: 450px; }
+        .search-bar { width: 100%; border: 1px solid #eaeaea; border-radius: 50px; padding: 12px 20px; font-size: 14px; background: #f9f9f9; outline: none; transition: all 0.3s ease; color: #333; }
+        .search-bar:focus { background: #fff; border-color: #ff6b00; box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1); }
+        .search-btn { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: #ff6b00; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; transition: background 0.3s, transform 0.2s; display: flex; align-items: center; justify-content: center; }
+        .search-btn:hover { background: #e56000; transform: translateY(-50%) scale(1.05); }
+
+        .user-actions { display: flex; align-items: center; gap: 24px; }
+        .action-item { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; color: #333; font-weight: 600; font-size: 14px; transition: color 0.3s; }
+        .action-item:hover { color: #ff6b00; }
+        
+        .icon-circle { width: 40px; height: 40px; border-radius: 50%; background: #f5f5f7; display: flex; align-items: center; justify-content: center; color: #444; transition: all 0.3s ease; position: relative; }
+        .action-item:hover .icon-circle { background: #ffef3; color: #ff6b00; transform: translateY(-2px); }
+        
+        .badge { position: absolute; top: -4px; right: -4px; background: #ff3333; color: white; font-size: 11px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 2px solid #fff; box-sizing: content-box; }
+        
+        .menuMember { position: absolute; top: 120%; right: 0; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 8px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all 0.3s ease; transform: translateY(10px); z-index: 100; border: 1px solid #f0f0f0; }
+        .member:hover .menuMember, .menuMember.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .menuMember a { display: block; padding: 10px 20px; color: #444; text-decoration: none; font-size: 14px; font-weight: 500; transition: background 0.2s; }
+        .menuMember a:hover { background: #f8f9fa; color: #ff6b00; }
+        
+        /* Modal Tabs */
+        .containTaikhoan { background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; display: none; align-items: center; justify-content: center; }
+        .taikhoan { background: #fff; width: 100%; max-width: 480px; border-radius: 20px; padding: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); position: relative; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #999; transition: color 0.2s; }
+        .close:hover { color: #111; }
+        .tab-group { list-style: none; padding: 0; margin: 0 0 30px 0; display: flex; border-bottom: 2px solid #eee; }
+        .tab { flex: 1; text-align: center; }
+        .tab a { display: block; padding: 15px; text-decoration: none; font-weight: 600; font-size: 16px; color: #888; cursor: pointer; transition: all 0.3s; }
+        .tab.active a { color: #ff6b00; border-bottom: 3px solid #ff6b00; margin-bottom: -2px; }
+        .tab-content h1 { text-align: center; font-size: 24px; color: #222; margin-bottom: 25px; font-weight: 700; }
+        .field-wrap { margin-bottom: 20px; }
+        .field-wrap label { display: block; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 8px; }
+        .req { color: #ff3333; margin-left: 3px; }
+        .field-wrap input { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; outline: none; transition: border-color 0.3s; background: #fafafa; }
+        .field-wrap input:focus { border-color: #ff6b00; background: #fff; }
+        .button-block { width: 100%; background: #ff6b00; color: #fff; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.3s, transform 0.1s; display: block; text-align: center; }
+        .button-block:hover { background: #e56000; }
+        .button-block:active { transform: scale(0.98); }
+        .forgot { text-align: right; margin-bottom: 20px; }
+        .forgot a { color: #666; text-decoration: none; font-size: 13px; transition: color 0.2s; }
+        .forgot a:hover { color: #ff6b00; }
+        .top-row { display: flex; gap: 15px; }
+        .top-row .field-wrap { flex: 1; }
+    </style>
+
+	<header class="header">
+        <div class="header-container">
+            <!-- Professional SVG Logo -->
+			<div class="logo">
+				<a href="/">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 4px 6px rgba(255, 107, 0, 0.2));">
+                        <rect x="6" y="2" width="28" height="36" rx="6" fill="url(#brand-grad)" stroke="#111" stroke-width="2.5"/>
+                        <rect x="15" y="6" width="10" height="2" rx="1" fill="#111"/>
+                        <circle cx="20" cy="32" r="2.5" fill="#111"/>
+                        <defs>
+                            <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#ff9a44" />
+                                <stop offset="100%" stop-color="#fc6076" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="brand-text">LDD<span>Store</span></div>
+                </a>
+			</div>
+            
+			<div class="search-wrapper">
+                <form method="get" action="/">
+                    <input id="search-box" class="search-bar" name="search" autocomplete="off" type="text" placeholder="Bạn muốn tìm smartphone nào hôm nay?">
+                    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                </form>
+			</div>
+            
+			<div class="user-actions">
+                <div class="member" style="position: relative;">
+                    <a class="action-item" onclick="checkTaiKhoan()">
+                        <div class="icon-circle"><i class="fa fa-user-o"></i></div> 
+                        <span>Tài khoản</span>
+                    </a>
+                    <div class="menuMember">
+                        <a href="/Home/NguoiDung"><i class="fa fa-tachometer" style="width:20px;"></i> Trang quản lý</a>
+                        <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();" style="color: #ff3333;"><i class="fa fa-sign-out" style="width:20px;"></i> Đăng xuất</a>
+                    </div>
+                </div>
+                
+                <div class="cart">
+                    <a href="/GioHang" class="action-item">
+                        <div class="icon-circle">
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="badge cart-number">0</span>
+                        </div>
+                        <span>Giỏ hàng</span>
+                    </a>
+                </div>
+			</div>
+		</div>
+	</header>
+    
+    <main style="min-height: 50vh;">
+        @RenderBody()
+    </main>
+
+	<div class="containTaikhoan">
+        <div class="taikhoan">
+            <span class="close" onclick="showTaiKhoan(false);">&times;</span>
+            <ul class="tab-group">
+                <li class="tab active"><a data-target="login">Đăng nhập</a></li>
+                <li class="tab"><a data-target="signup">Đăng kí</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="login">
+                    <h1>Chào mừng bạn trở lại!</h1>
+                    <form onsubmit="alert('Tính năng đang phát triển'); return false;">
+                        <div class="field-wrap">
+                            <label>Tên đăng nhập<span class="req">*</span></label>
+                            <input name='username' type="text" required autocomplete="off" placeholder="Nhập tên đăng nhập hoặc email" />
+                        </div>
+                        <div class="field-wrap">
+                            <label>Mật khẩu<span class="req">*</span></label>
+                            <input name="pass" type="password" required autocomplete="off" placeholder="••••••••" />
+                        </div>
+                        <p class="forgot"><a href="javascript:void(0);">Quên mật khẩu?</a></p>
+                        <button type="submit" class="button-block">Đăng Nhập</button>
+                    </form>
+                </div>
+                <div id="signup" style="display: none;">
+                    <h1>Tạo tài khoản mới</h1>
+                    <form onsubmit="alert('Tính năng đang phát triển'); return false;">
+                        <div class="top-row">
+                            <div class="field-wrap"><label>Họ<span class="req">*</span></label><input name="ho" type="text" required autocomplete="off" placeholder="VD: Nguyễn" /></div>
+                            <div class="field-wrap"><label>Tên<span class="req">*</span></label><input name="ten" type="text" required autocomplete="off" placeholder="VD: Văn A" /></div>
+                        </div>
+                        <div class="field-wrap"><label>Địa chỉ Email<span class="req">*</span></label><input name="email" type="email" required autocomplete="off" placeholder="email@example.com" /></div>
+                        <div class="field-wrap"><label>Tên đăng nhập<span class="req">*</span></label><input name="newUser" type="text" required autocomplete="off" /></div>
+                        <div class="field-wrap"><label>Mật khẩu<span class="req">*</span></label><input name="newPass" type="password" required autocomplete="off" placeholder="Ít nhất 8 ký tự" /></div>
+                        <button type="submit" class="button-block">Tạo Tài Khoản</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer style="background: #fafafa; border-top: 1px solid #eaeaea; color: #333; padding: 70px 0 30px; margin-top: 80px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding: 0 20px;">
+        <div style="padding-right: 30px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="2" width="28" height="36" rx="6" fill="url(#brand-grad-ft)" stroke="#111" stroke-width="2"/>
+                    <rect x="15" y="6" width="10" height="2" rx="1" fill="#111"/>
+                    <circle cx="20" cy="32" r="2.5" fill="#111"/>
+                    <defs>
+                        <linearGradient id="brand-grad-ft" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ff9a44" />
+                            <stop offset="100%" stop-color="#fc6076" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h3 style="font-size: 24px; font-weight: 800; color: #111; letter-spacing: -0.5px; margin: 0; line-height: 1;">LDD<span style="color:#ff6b00;">Store</span></h3>
+            </div>
+            <p style="color: #666; font-size: 15px; line-height: 1.6; margin-bottom: 24px;">Hệ thống bán lẻ thiết bị công nghệ đỉnh cao, cam kết chính hãng 100% với giá tốt nhất thị trường cùng chế độ hậu đãi tuyệt vời.</p>
+            <div style="display: flex; gap: 12px;">
+                <a href="#" style="color: #111; font-size: 18px; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='#1877F2'; this.style.color='#fff'; this.style.borderColor='#1877F2';" onmouseout="this.style.background='#fff'; this.style.color='#111'; this.style.borderColor='#ddd';"><i class="fa fa-facebook"></i></a>
+                <a href="#" style="color: #111; font-size: 18px; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='#FF0000'; this.style.color='#fff'; this.style.borderColor='#FF0000';" onmouseout="this.style.background='#fff'; this.style.color='#111'; this.style.borderColor='#ddd';"><i class="fa fa-youtube-play"></i></a>
+                <a href="#" style="color: #111; font-size: 18px; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;" onmouseover="this.style.background='#E1306C'; this.style.color='#fff'; this.style.borderColor='#E1306C';" onmouseout="this.style.background='#fff'; this.style.color='#111'; this.style.borderColor='#ddd';"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+        <div>
+            <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 25px; color: #111;">Sản phẩm nổi bật</h4>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+                <li><a href="/?search=iPhone" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">iPhone 15 Series</a></li>
+                <li><a href="/?search=Samsung" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Samsung Z Fold & Flip</a></li>
+                <li><a href="/?search=Xiaomi" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Xiaomi Flagship</a></li>
+                <li><a href="/?search=Oppo" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Oppo Find Series</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 25px; color: #111;">Hỗ trợ & Hướng dẫn</h4>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+                <li><a href="/Home/BaoHanh" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Chính sách bảo hành</a></li>
+                <li><a href="/GioHang" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Hướng dẫn mua hàng</a></li>
+                <li><a href="/Home/LienHe" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Liên hệ & Góp ý</a></li>
+                <li><a href="/Home/ChinhSachDoiTra" style="color: #555; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#ff6b00'" onmouseout="this.style.color='#555'">Chính sách đổi trả</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-size: 17px; font-weight: 700; margin-bottom: 25px; color: #111;">Đăng ký nhận Ưu Đãi</h4>
+            <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Tham gia bản tin của chúng tôi để nhận voucher sớm nhất.</p>
+            <div style="display: flex; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden;">
+                <input type="text" placeholder="Nhập email của bạn..." style="padding: 14px 18px; border: 1px solid #ddd; border-right: none; outline: none; width: 100%; font-size: 14px; background: #fff; color: #333; border-radius: 8px 0 0 8px;">
+                <button style="background: #ff6b00; color: white; border: none; padding: 0 24px; font-weight: 700; cursor: pointer; transition: background 0.3s;" onmouseover="this.style.background='#e56000'" onmouseout="this.style.background='#ff6b00'">GỬI</button>
+            </div>
+            <div id="alert" style="display:none; position:fixed; bottom: 30px; right: 30px; padding: 16px 24px; border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 9999; font-weight: 600; font-size: 15px;"></div>
+        </div>
+    </div>
+    <div style="border-top: 1px solid #eaeaea; margin-top: 60px; padding: 30px 20px 10px; max-width: 1200px; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between; align-items: center; color: #888; font-size: 14px; flex-wrap: wrap; gap: 15px;">
+        <p style="margin: 0;">&copy; 2026 <strong>LDD Store</strong>. Được thiết kế với tâm huyết.</p>
+        <div style="display: flex; gap: 20px;">
+            <a href="#" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#888'">Điều khoản</a>
+            <a href="#" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#888'">Bảo mật</a>
+        </div>
+    </div>
+</footer>
+	<div id="goto-top-page" onclick="gotoTop()" style="position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: #fff; color: #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #eaeaea; transition: all 0.3s; z-index: 900; opacity: 0; pointer-events: none;"><i class="fa fa-arrow-up"></i></div>
+    <style>
+        #goto-top-page:hover { background: #ff6b00; color: #fff; border-color: #ff6b00; transform: translateY(-3px); }
+        #goto-top-page.show { opacity: 1; pointer-events: auto; }
+    </style>
+    
+    <script>
+    // Scroll to top visibility
+    window.addEventListener('scroll', function() {
+        var topBtn = document.getElementById('goto-top-page');
+        if (window.scrollY > 300) { topBtn.classList.add('show'); }
+        else { topBtn.classList.remove('show'); }
+    });
+    
+    function themVaoGioHangMoi(maSp) {
+        $.post('/GioHang/ThemVaoGioHang', { maSp: maSp }, function(res) {
+            if(res.success) {
+                $('.cart-number').text(res.totalCount);
+                // Premium toast notification
+                var alertBox = $('#alert');
+                alertBox.html('<div style="display: flex; align-items: center; gap: 12px;"><div style="width: 28px; height: 28px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fa fa-check"></i></div> Đã thêm vào giỏ hàng thành công!</div>');
+                alertBox.css({'background': 'linear-gradient(135deg, #00c6ff, #0072ff)', 'color': 'white'});
+                alertBox.fadeIn(300);
+                setTimeout(function(){ alertBox.fadeOut(300); }, 3500);
+            }
+        });
+    }
+
+    // Modal UI logic
+    function checkTaiKhoan() {
+        $('.containTaikhoan').css('display', 'flex').hide().fadeIn(300);
+    }
+    function showTaiKhoan(show) {
+        if(show) { $('.containTaikhoan').css('display', 'flex').hide().fadeIn(300); }
+        else { $('.containTaikhoan').fadeOut(300); }
+    }
+    
+    // Auth Tabs Transition
+    $('.tab a').on('click', function (e) {
+        e.preventDefault();
+        $(this).parent().addClass('active');
+        $(this).parent().siblings().removeClass('active');
+        var target = $(this).attr('data-target');
+        $('.tab-content > div').not('#' + target).fadeOut(150, function() {
+            $('#' + target).fadeIn(200);
+        });
+    });
+    
+    // Close modal when clicking outside
+    $('.containTaikhoan').click(function(e) {
+        if($(e.target).is('.containTaikhoan')) {
+            showTaiKhoan(false);
+        }
+    });
+    </script>
+    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

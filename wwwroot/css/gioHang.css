@@ -1,0 +1,188 @@
+/* Shopping Cart Table Modernized */
+.listSanPham {
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    background: var(--white-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--gray-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.listSanPham th {
+    border: none;
+    padding: 16px;
+    text-align: left;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.listSanPham td {
+    border: none;
+    border-bottom: 1px solid var(--gray-light);
+    padding: 16px;
+    color: var(--black-color);
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.listSanPham tr:last-child td {
+    border-bottom: none;
+}
+
+.listSanPham tr:hover td {
+    background-color: rgba(0, 91, 187, 0.02);
+}
+
+.listSanPham tr td:first-child, .listSanPham tr th {
+    text-align: center;
+}
+
+.listSanPham tr:nth-of-type(even) {
+    background-color: var(--white-color);
+}
+
+/* Summary Row Styling */
+.listSanPham tr:last-child {
+    background-color: var(--gray-light);
+    font-weight: bold;
+}
+
+.listSanPham tr:last-child:hover td {
+    background-color: var(--gray-light);
+}
+
+/* Quantity Counter Customization */
+.listSanPham .soluong {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.listSanPham .soluong button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listSanPham .soluong button:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.listSanPham .soluong input {
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--white-color);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    width: 40px;
+    height: 28px;
+    margin: 0 4px;
+}
+
+/* Link to Product Detail inside Cart */
+.noPadding {
+    padding: 12px 16px;
+}
+
+.listSanPham td a {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--black-color);
+    position: relative;
+}
+
+.listSanPham td a:hover {
+    color: var(--primary-color);
+}
+
+/* Image Tooltip positioning */
+.imgHide img {
+    position: absolute;
+    right: -140px;
+    top: -50px;
+    width: 120px;
+    height: 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-border);
+    background: var(--white-color);
+    object-fit: contain;
+    transition: height 0.2s ease, padding 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.imgHide a:hover img {
+    height: 120px;
+    padding: 10px;
+}
+
+.alignRight {
+    text-align: right !important;
+    padding-right: 24px !important;
+    font-weight: 600;
+}
+
+/* Trash Icon Button */
+.fa-trash {
+    color: rgb(173, 181, 189);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-size: 16px;
+}
+
+.fa-trash:hover {
+    color: rgb(236, 31, 31);
+    transform: scale(1.2);
+}
+
+/* Checkout and Clear actions buttons */
+.thanhtoan {
+    font-size: 15px;
+    padding: 12px 20px !important;
+    font-weight: 700;
+    background-color: var(--primary-color);
+    color: var(--white-color) !important;
+    cursor: pointer;
+    text-align: center;
+    border-radius: var(--radius-md);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.thanhtoan:hover {
+    background-color: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3);
+}
+
+.xoaHet {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(108, 117, 125) !important;
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.xoaHet:hover {
+    color: rgb(236, 31, 31) !important;
+    text-decoration: underline;
+}

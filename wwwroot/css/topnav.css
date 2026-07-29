@@ -1,0 +1,101 @@
+/* Top Navigation Modernized */
+.top-nav {
+    display: block;
+    background: var(--black-color);
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-nav section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+/* Social Icon */
+.social-top-nav {
+    display: flex;
+    align-items: center;
+}
+
+.social-top-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    height: 40px;
+    width: 40px;
+    color: rgb(173, 181, 189);
+    background-color: transparent;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.social-top-nav a:hover {
+    color: var(--white-color);
+}
+
+.fa-facebook:hover { background: rgb(59, 89, 152); }
+.fa-twitter:hover { background: rgb(85, 172, 238); }
+.fa-google:hover { background: rgb(221, 75, 57); }
+.fa-youtube:hover { background: rgb(187, 0, 0); }
+
+/* Quick link */
+.top-nav-quicklink {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.top-nav-quicklink li {
+    display: inline-block;
+    height: 100%;
+}
+
+.top-nav-quicklink li a {
+    display: flex;
+    align-items: center;
+    color: rgb(206, 212, 218);
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    height: 100%;
+    position: relative;
+}
+
+.top-nav-quicklink li a i {
+    margin-right: 6px;
+    font-size: 14px;
+    transition: var(--transition-smooth);
+}
+
+.top-nav-quicklink li a:hover {
+    color: var(--white-color);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.top-nav-quicklink li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+}
+
+.top-nav-quicklink li a:hover::after {
+    width: 100%;
+}
+
+.top-nav-quicklink li a:hover i {
+    color: var(--primary-light);
+    transform: scale(1.1);
+}
