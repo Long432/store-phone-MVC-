@@ -3,7 +3,6 @@
 <div align="center">
   <i>Đồ án môn Web 1 (Web tĩnh) - Đề tài xây dựng trang web bán điện thoại với giao diện thân thiện, dễ sử dụng và đầy đủ chức năng.</i>
   <br><br>
-  <a href="https://github.com/HoangTran0410/HoangTran0410/blob/main/DONATE.md"><img src="https://img.shields.io/badge/Donate-Buy_Me_A_Coffee-ff69b4?style=for-the-badge&logo=buy-me-a-coffee"></a>
 </div>
 
 ---
