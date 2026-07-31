@@ -1,4 +1,4 @@
-<h1 align="center">📱 Công Nghệ Lập Trình Web - Đồ Án Web Bán Điện Thoại</h1>
+<h1 align="center">📱 Công Nghệ Lập Trình Web - Web Bán Điện Thoại</h1>
 
 <div align="center">
   <i>Đồ án môn Web 1 (Web tĩnh) - Đề tài xây dựng trang web bán điện thoại với giao diện thân thiện, dễ sử dụng và đầy đủ chức năng.</i>
